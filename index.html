@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlowOpz GHL Preview</title>
+<meta name="description" content="GoHighLevel & Workflow Automation Specialists. Design preview for the FlowOpz GHL page.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- 1) Ye wahi CSS hai jo GHL ke Custom CSS mein paste hogi -->
+<link rel="stylesheet" href="ghl-custom-css.css">
+
+<!-- 2) PREVIEW ONLY: GHL ki native settings (fonts, colors, padding, columns,
+        borders) ka simulation. Ise GHL mein paste NAHI karna. -->
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #fff;
+    color: #111;
+    font: 400 17px/1.6 "Instrument Sans", system-ui, sans-serif;
+  }
+  h1, h2, h3, p, ul { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  a { color: inherit; }
+  strong { font-weight: 600; }
+
+  /* GHL Section > Row > Column */
+  .c-section { padding: var(--pt, 120px) 0 var(--pb, 120px); background: var(--bg, #fff); color: var(--fg, #111); }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+  .c-row { margin-top: var(--mt, 0); background: var(--rbg, transparent); }
+  .c-row > .inner {
+    display: grid;
+    grid-template-columns: var(--cols, 1fr);
+    column-gap: var(--cgap, 32px);
+    align-items: var(--align, start);
+  }
+
+  .dark { --bg: #111; --fg: #fff; }
+  .soft { --bg: #f3f3f0; }
+  .red  { --bg: #e63b19; --fg: #111; }
+  .muted { color: #5f5f5f; }
+  .dark .muted { color: #b5b5b5; }
+  .accent { color: #e63b19; }
+
+  /* Header */
+  .s-header { border-bottom: 1px solid #111; }
+  .logo { font: 800 24px/1 "Archivo", sans-serif; letter-spacing: -.03em; text-decoration: none; }
+  .fo-nav { display: flex; justify-content: flex-end; gap: 32px; font-weight: 500; font-size: 15px; }
+  .fo-nav a { display: inline-block; line-height: 44px; padding-bottom: 0; background-position: left 32px; }
+  .menu-btn {
+    display: none; min-height: 44px; padding: 0 4px;
+    background: none; border: 0; cursor: pointer;
+    font: 500 15px/1 "Instrument Sans", sans-serif; color: #111;
+  }
+  .menu-panel { display: none; }
+  .right { display: flex; justify-content: flex-end; }
+
+  /* Buttons (GHL native style) */
+  .fo-btn a, .fo-btn-ink a {
+    display: inline-flex; align-items: center; gap: 12px;
+    min-height: 52px; padding: 0 26px;
+    background: #111; color: #fff;
+    font: 500 16px/1 "Instrument Sans", sans-serif;
+    text-decoration: none; border-radius: 0;
+  }
+  .fo-btn.sm a { min-height: 44px; padding: 0 18px; font-size: 15px; }
+  .fo-link { font-size: 15px; font-weight: 500; }
+  .fo-link a { display: inline-block; line-height: 28px; }
+
+  /* Hero */
+  .el-divider { height: 1px; background: #111; }
+  .proof { font-size: 15px; line-height: 1.55; color: #5f5f5f; }
+  .proof strong { color: #111; }
+  .lead { font-size: 20px; line-height: 1.55; max-width: 34em; }
+  .cta-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+  .hero-side { padding-left: 8%; }
+  .hero-side .proof { margin-top: 28px; padding-top: 16px; border-top: 1px solid #dcdcd8; max-width: 26em; }
+  @media (max-width: 767px) { .hero-side { padding-left: 0; } }
+  .caption { font-size: 15px; color: #5f5f5f; margin-bottom: 14px; }
+  .pipe { border: 1px solid #111; }
+  .pipe .c-column + .c-column { border-left: 1px solid #111; }
+  .stage { padding: 22px 20px; font: 700 clamp(17px, 1.6vw, 22px)/1.2 "Archivo", sans-serif; letter-spacing: -.01em; }
+  .stage span { font-weight: 500; opacity: .5; margin-left: 6px; }
+
+  /* Stats */
+  .stat-num { font: 800 clamp(40px, 4.4vw, 64px)/1 "Archivo", sans-serif; letter-spacing: -.04em; }
+  .stat-label { font-size: 15px; color: #5f5f5f; margin-top: 12px; max-width: 16em; }
+
+  /* Marquee */
+  .fo-marquee p { font: 800 clamp(36px, 5.6vw, 84px)/1.1 "Archivo", sans-serif; letter-spacing: -.035em; }
+
+  /* What we do */
+  .intro { font-size: 18px; line-height: 1.6; color: #5f5f5f; max-width: 30em; }
+  .dark .intro { color: #b5b5b5; }
+  .feature { padding: 36px 0 56px; }
+  .feature h3 { font: 800 clamp(30px, 3.4vw, 48px)/1 "Archivo", sans-serif; letter-spacing: -.03em; max-width: 12em; }
+  .feature p { font-size: 19px; line-height: 1.6; max-width: 36em; }
+  .item { padding: 32px 0 48px; }
+  .item h3 { font: 700 clamp(22px, 2.2vw, 28px)/1.15 "Archivo", sans-serif; letter-spacing: -.02em; margin-bottom: 14px; max-width: 18em; }
+  .item p { color: #5f5f5f; max-width: 34em; }
+  .item .fo-link, .feature .fo-link { margin-top: 20px; }
+
+  /* Process */
+  .fo-step { padding-top: 28px; }
+  .step-k { font-size: 14px; color: #b5b5b5; margin-bottom: 10px; }
+  .step-t { font: 700 clamp(19px, 1.8vw, 24px)/1.25 "Archivo", sans-serif; letter-spacing: -.015em; max-width: 13em; }
+  .builder { font: 500 clamp(20px, 2vw, 26px)/1.4 "Archivo", sans-serif; letter-spacing: -.015em; max-width: 22em; }
+  .certs-h { font-size: 14px; color: #b5b5b5; margin-bottom: 8px; }
+  .cert { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.25); }
+  .cert:last-child { border-bottom: 1px solid rgba(255,255,255,.25); }
+  .cert span:last-child { color: #b5b5b5; }
+
+  /* Pricing */
+  .fo-plan { padding: 32px 28px 40px; }
+  .plan-name { font: 700 22px/1.2 "Archivo", sans-serif; letter-spacing: -.015em; }
+  .price { font: 800 clamp(52px, 5vw, 72px)/1 "Archivo", sans-serif; letter-spacing: -.045em; margin: 28px 0 8px; }
+  .price span { font-size: 20px; font-weight: 500; letter-spacing: 0; color: #5f5f5f; margin-left: 4px; }
+  .plan-sub { color: #5f5f5f; margin-bottom: 24px; min-height: 3.2em; }
+  .plan-list li { padding: 10px 0; border-top: 1px solid #dcdcd8; font-size: 16px; }
+  .plan-list { margin-bottom: 32px; }
+  .est-h { font: 700 22px/1.2 "Archivo", sans-serif; letter-spacing: -.015em; }
+  .est { display: grid; grid-template-columns: 9em 1fr; gap: 24px; padding: 18px 0; border-top: 1px solid #111; }
+  .est:last-child { border-bottom: 1px solid #111; }
+  .est strong { font-family: "Archivo", sans-serif; font-weight: 700; }
+  .est span { color: #5f5f5f; }
+
+  /* FAQ (GHL ka native FAQ element) */
+  .faq details { border-top: 1px solid #111; }
+  .faq details:last-child { border-bottom: 1px solid #111; }
+  .faq summary {
+    list-style: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    min-height: 44px; padding: 22px 0;
+    font: 700 clamp(18px, 1.7vw, 22px)/1.3 "Archivo", sans-serif; letter-spacing: -.015em;
+    transition: color .3s;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font: 500 28px/1 "Archivo", sans-serif; transition: transform .4s cubic-bezier(.22,1,.36,1); }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  @media (hover: hover) { .faq summary:hover { color: #e63b19; } }
+  .faq details p { padding: 0 0 26px; max-width: 40em; color: #3d3d3d; }
+
+  /* CTA (red) */
+  .s-cta .fo-display, .s-cta .fo-display * { color: #fff; }
+  .cta-text { font-size: 20px; line-height: 1.55; max-width: 30em; }
+
+  /* Footer */
+  .foot-logo { font: 800 28px/1 "Archivo", sans-serif; letter-spacing: -.03em; margin-bottom: 14px; }
+  .foot-list li { padding: 4px 0; }
+  .foot-list .fo-link a { color: #fff; }
+  .foot-h { font-size: 14px; color: #8f8f8f; margin-bottom: 10px; }
+  .foot-bottom { border-top: 1px solid #333; padding-top: 24px; font-size: 14px; color: #8f8f8f; }
+  .foot-bottom .fo-link { font-size: 14px; font-weight: 400; }
+  .foot-bottom .fo-link a { color: #b5b5b5; }
+
+  /* ---- Tablet ---- */
+  @media (max-width: 1023px) {
+    .wrap { padding: 0 28px; }
+    .fo-nav { gap: 22px; }
+    .lead, .cta-text { font-size: 18px; }
+    .fo-plan { padding: 28px 20px 32px; }
+  }
+
+  /* ---- Mobile: GHL har row ke columns stack karta hai ---- */
+  @media (max-width: 767px) {
+    .wrap { padding: 0 20px; }
+    .c-row > .inner { grid-template-columns: 1fr; row-gap: 20px; }
+    .c-section { padding: calc(var(--pt, 120px) * .6) 0 calc(var(--pb, 120px) * .6); }
+    .hide-mobile, .fo-nav { display: none !important; }
+    .menu-btn { display: inline-flex; align-items: center; }
+    .menu-panel.open { display: flex; flex-direction: column; padding: 8px 0 16px; }
+    .menu-panel a {
+      text-decoration: none;
+      font: 700 22px/52px "Archivo", sans-serif; letter-spacing: -.02em;
+      border-top: 1px solid #e4e4e4;
+    }
+    .lead, .cta-text { font-size: 18px; }
+    .c-row.mt-sm { --mt: 40px !important; }
+    .pipe .inner { row-gap: 0 !important; }
+    .pipe .c-column + .c-column { border-left: 0; border-top: 1px solid #111; }
+    .stage { padding: 16px 18px; }
+    .stats .inner, .steps .inner, .plans .inner { row-gap: 0 !important; }
+    .fo-step { padding: 24px 0 28px; }
+    .item { padding: 24px 0 32px; }
+    .items .inner { row-gap: 0 !important; }
+    .feature { padding: 28px 0 36px; }
+    .est { grid-template-columns: 1fr; gap: 4px; }
+    .plan-sub { min-height: 0; }
+    .foot-bottom .right { justify-content: flex-start; }
+    .foot-bottom .inner, .foot-bottom { row-gap: 8px; }
+  }
+
+  /* PREVIEW ONLY: GHL native "Entrance Animation" (Fade Up, 0.8s) ka simulation */
+  .anim-wait {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .8s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1), color .3s;
+  }
+  .anim-wait.anim-in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- ================= Header ================= -->
+<header class="c-section s-header" style="--pt:14px; --pb:14px;">
+  <div class="wrap">
+    <div class="c-row fo-header" style="--cols: 3fr 6fr 3fr; --align: center;">
+      <div class="inner">
+        <div class="c-column"><a class="logo" href="#top">FlowOpz</a></div>
+        <div class="c-column right">
+          <nav class="fo-nav" aria-label="Main">
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+          <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel">Menu</button>
+        </div>
+        <div class="c-column right hide-mobile">
+          <div class="fo-btn sm"><a href="https://flowopz.com/book/">Book a call</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-panel" id="menu-panel">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://flowopz.com/book/">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= Hero ================= -->
+<section class="c-section s-hero" style="--pt:80px; --pb:0px;">
+  <div class="wrap">
+    <div class="c-row">
+      <div class="inner"><div class="c-column">
+        <h1 class="fo-display" data-anim data-delay=".7">Clean systems.<br>Flawless automations.<br><span class="accent">Scaled operations.</span></h1>
+      </div></div>
+    </div>
+
+    <div class="c-row mt-sm" style="--mt:64px;">
+      <div class="inner"><div class="c-column"><div class="el-divider fo-rule" role="presentation"></div></div></div>
+    </div>
+
+    <div class="c-row" style="--mt:28px; --cols: 7fr 5fr;">
+      <div class="inner">
+        <div class="c-column">
+          <p class="lead" data-anim data-delay=".95"><strong>GoHighLevel &amp; Workflow Automation Specialists.</strong> We build GoHighLevel snapshots, workflows and integrations that capture, follow up with and book your leads automatically, from a flat $10/hour.</p>
+        </div>
+        <div class="c-column hero-side">
+          <div class="cta-stack" data-anim data-delay="1.05">
+            <div class="fo-btn"><a href="https://flowopz.com/book/">Book a Free Consultation <span aria-hidden="true">→</span></a></div>
+            <p class="fo-link"><a href="#pricing">View Our Offers &amp; Rates</a></p>
+          </div>
+          <p class="proof" data-anim data-delay="1.15"><strong>Top Rated, 100% Job Success</strong><br>5.0 rating from real Upwork clients. HighLevel Certified Admin.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline strip: lead stage-by-stage aage barhta hai -->
+    <div class="c-row mt-sm" style="--mt:80px;">
+      <div class="inner"><div class="c-column">
+        <p class="caption" data-anim data-delay="1.2">Every lead tracked, with a live KPI dashboard so you always see what's happening.</p>
+      </div></div>
+    </div>
+    <div class="c-row pipe" style="--cols: repeat(5, 1fr); --cgap: 0;" data-anim data-delay="1.25">
+      <div class="inner">
+        <div class="c-column"><p class="stage fo-s1">New<span aria-hidden="true">→</span></p></div>
+        <div class="c-column"><p class="stage fo-s2">Contacted<span aria-hidden="true">→</span></p></div>
+        <div class="c-column"><p class="stage fo-s3">Quoted<span aria-hidden="true">→</span></p></div>
+        <div class="c-column"><p class="stage fo-s4">Booked<span aria-hidden="true">→</span></p></div>
+        <div class="c-column"><p class="stage fo-s5">Won</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Stats ================= -->
+<section class="c-section" style="--pt:96px; --pb:96px;">
+  <div class="wrap">
+    <div class="c-row stats" style="--cols: repeat(4, 1fr);">
+      <div class="inner">
+        <div class="c-column fo-stat" data-anim><p class="stat-num fo-num">$10/hr</p><p class="stat-label">Flat, transparent base rate</p></div>
+        <div class="c-column fo-stat" data-anim data-delay=".08"><p class="stat-num fo-num">&lt; 60 sec</p><p class="stat-label">Automated first reply to new leads</p></div>
+        <div class="c-column fo-stat" data-anim data-delay=".16"><p class="stat-num fo-num">100%</p><p class="stat-label">Fully documented client handoffs</p></div>
+        <div class="c-column fo-stat" data-anim data-delay=".24"><p class="stat-num fo-num">24/7</p><p class="stat-label">Systems that work while you sleep</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Tools marquee ================= -->
+<section class="c-section dark" style="--pt:28px; --pb:28px;" aria-label="Tools we work with">
+  <div class="c-row">
+    <div class="inner"><div class="c-column">
+      <div class="fo-marquee"><p>GoHighLevel · n8n · Make · Zapier · Stripe · Klaviyo · VAPI · Conversation AI · GoHighLevel · n8n · Make · Zapier · Stripe · Klaviyo · VAPI · Conversation AI · </p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= What we do ================= -->
+<section class="c-section" id="services">
+  <div class="wrap">
+    <div class="c-row" style="--cols: 1fr 1fr; --align: end;">
+      <div class="inner">
+        <div class="c-column"><h2 class="fo-h2" data-anim>What we do.</h2></div>
+        <div class="c-column"><p class="intro" data-anim data-delay=".1">Pick a single targeted fix or hire us by the hour to build and maintain your entire tech stack.</p></div>
+      </div>
+    </div>
+
+    <div class="c-row fo-item mt-sm" style="--mt:72px; --cols: 5fr 7fr;">
+      <div class="inner feature">
+        <div class="c-column"><h3 data-anim>GoHighLevel setup and snapshots</h3></div>
+        <div class="c-column">
+          <p data-anim data-delay=".08">We set up GHL sub-accounts from scratch or clean up existing ones: pipelines, calendars, forms, custom fields, custom values and workflows. For agencies, we package that setup into reusable GoHighLevel snapshots, so every new client account launches with a tested system instead of a blank dashboard.</p>
+          <p class="fo-link"><a href="https://flowopz.com/book/">Ask about this →</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-row items" style="--cols: 1fr 1fr;">
+      <div class="inner">
+        <div class="c-column fo-item item">
+          <h3 data-anim>Speed-to-lead and follow-up automation</h3>
+          <p data-anim data-delay=".08">New enquiries get an instant SMS and email reply, your team gets an alert, and an opportunity is created in the pipeline automatically. Missed calls trigger a text back, and nurture sequences stop the moment a lead replies or books, so prospects hear from you in under a minute and never get spammed.</p>
+          <p class="fo-link"><a href="https://flowopz.com/book/">Ask about this →</a></p>
+        </div>
+        <div class="c-column fo-item item">
+          <h3 data-anim>Integrations with n8n, Make and Zapier</h3>
+          <p data-anim data-delay=".08">When GoHighLevel needs to talk to other tools, we connect it with webhooks, the GHL API, n8n, Make or Zapier. Typical builds sync payments from Stripe, push won deals to accounting and project tools, enrich new leads and send weekly reports, with error alerts so nothing breaks silently.</p>
+          <p class="fo-link"><a href="https://flowopz.com/book/">Ask about this →</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-row items" style="--cols: 1fr 1fr;">
+      <div class="inner">
+        <div class="c-column fo-item item">
+          <h3 data-anim>AI agents for chat, calls and your website</h3>
+          <p data-anim data-delay=".08">We train Conversation AI chat agents on your services and FAQs, set up VAPI voice agents that answer calls and handle after-hours routing, and add AI website bots that capture visitors and feed them into your pipeline. Leads get answers at any hour and qualified ones receive a booking link.</p>
+          <p class="fo-link"><a href="https://flowopz.com/book/">Ask about this →</a></p>
+        </div>
+        <div class="c-column fo-item item">
+          <h3 data-anim>Pipelines, calendars and reporting</h3>
+          <p data-anim data-delay=".08">Clean pipelines move deals automatically from new lead to won, with lost reasons you can act on. Calendars sync both ways with confirmations and reminders to cut no-shows, and a KPI dashboard shows where leads come from and where revenue leaks, so decisions are based on real numbers.</p>
+          <p class="fo-link"><a href="https://flowopz.com/book/">Ask about this →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Process (dark) ================= -->
+<section class="c-section dark" id="process">
+  <div class="wrap">
+    <div class="c-row" style="--cols: 5fr 7fr; --align: end;">
+      <div class="inner">
+        <div class="c-column"><h2 class="fo-h2" data-anim>How does a custom build work?</h2></div>
+        <div class="c-column"><p class="intro" data-anim data-delay=".1">You work directly with the builders, not account managers. Every project starts with a free consultation and a written estimate, work is billed hourly with no retainers or lock-in, and each build ends with documentation, SOPs and video walkthroughs so your team owns the system completely.</p></div>
+      </div>
+    </div>
+
+    <div class="c-row steps mt-sm" style="--mt:80px; --cols: repeat(4, 1fr);">
+      <div class="inner">
+        <div class="c-column fo-step"><p class="step-k" data-anim>Step 1</p><p class="step-t" data-anim>Book a discovery/audit call.</p></div>
+        <div class="c-column fo-step"><p class="step-k" data-anim data-delay=".08">Step 2</p><p class="step-t" data-anim data-delay=".08">We review your current process and goals.</p></div>
+        <div class="c-column fo-step"><p class="step-k" data-anim data-delay=".16">Step 3</p><p class="step-t" data-anim data-delay=".16">You receive a clear proposal with scope, estimated hours, and price.</p></div>
+        <div class="c-column fo-step"><p class="step-k" data-anim data-delay=".24">Step 4</p><p class="step-t" data-anim data-delay=".24">Work starts only after approval.</p></div>
+      </div>
+    </div>
+
+    <div class="c-row mt-sm" style="--mt:104px; --cols: 5fr 7fr;">
+      <div class="inner">
+        <div class="c-column">
+          <p class="builder" data-anim>You work directly with technical builders, led by Muhammad Umar, a Top Rated GoHighLevel and automation expert on Upwork with 100% Job Success.</p>
+          <p class="fo-link" style="margin-top:20px;"><a href="https://www.upwork.com/freelancers/muhammadu649">View Upwork profile →</a></p>
+        </div>
+        <div class="c-column" data-anim data-delay=".1">
+          <p class="certs-h">Certifications</p>
+          <div class="cert"><span>HighLevel Certified Admin</span><span>HighLevel</span></div>
+          <div class="cert"><span>Make Advanced</span><span>Make</span></div>
+          <div class="cert"><span>Airtable Builder</span><span>Airtable</span></div>
+          <div class="cert"><span>ClickUp Expert</span><span>ClickUp</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Pricing ================= -->
+<section class="c-section" id="pricing">
+  <div class="wrap">
+    <div class="c-row" style="--cols: 1fr 1fr; --align: end;">
+      <div class="inner">
+        <div class="c-column"><h2 class="fo-h2" data-anim>Straightforward, accessible pricing.</h2></div>
+        <div class="c-column"><p class="intro" data-anim data-delay=".1">Hire dedicated technical expertise for GHL setups, integrations, and automations at a flat $10/hour. No hidden fees or bloated retainers.</p></div>
+      </div>
+    </div>
+
+    <div class="c-row plans mt-sm" style="--mt:72px; --cols: repeat(3, 1fr); --cgap: 24px;">
+      <div class="inner">
+        <div class="c-column fo-plan" data-anim>
+          <h3 class="plan-name">Hourly On-Demand</h3>
+          <p class="price fo-price">$10<span>/hr</span></p>
+          <p class="plan-sub">Pay only for the hours you use.</p>
+          <ul class="plan-list"><li>Ad-hoc tasks, tweaks and bug fixes</li><li>Transparent tracking</li><li>Zero lock-in</li></ul>
+          <div class="fo-btn"><a href="https://flowopz.com/book/">Get Started Today</a></div>
+        </div>
+        <div class="c-column fo-plan" data-anim data-delay=".08">
+          <h3 class="plan-name">Weekly Sprint</h3>
+          <p class="price fo-price">$200<span>/week</span></p>
+          <p class="plan-sub">20 hrs. Dedicated development blocks every week.</p>
+          <ul class="plan-list"><li>Dedicated dev blocks</li><li>Priority queue</li><li>Daily updates</li><li>Full SOPs</li></ul>
+          <div class="fo-btn"><a href="https://flowopz.com/book/">Get Started Today</a></div>
+        </div>
+        <div class="c-column fo-plan" data-anim data-delay=".16">
+          <h3 class="plan-name">Agency Dedicated</h3>
+          <p class="price fo-price">$400<span>/week</span></p>
+          <p class="plan-sub">40 hrs. Full-time technical leverage for your agency.</p>
+          <ul class="plan-list"><li>Full-time leverage</li><li>Custom snapshot builds</li><li>Client handoffs</li><li>Direct communication</li></ul>
+          <div class="fo-btn"><a href="https://flowopz.com/book/">Get Started Today</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-row mt-sm" style="--mt:96px; --cols: 4fr 8fr;">
+      <div class="inner">
+        <div class="c-column"><h3 class="est-h" data-anim>Output estimates at $10/hour</h3></div>
+        <div class="c-column" data-anim data-delay=".08">
+          <p class="est"><strong>2–4 hours</strong><span>Single webhook connections, workflow tweaks, and quick automation fixes.</span></p>
+          <p class="est"><strong>5–10 hours</strong><span>Multi-step automation workflow (n8n/GHL) or lead nurture sequence.</span></p>
+          <p class="est"><strong>15–25 hours</strong><span>Turnkey GHL sub-account setup with calendars and core pipelines.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="c-section soft" id="faq">
+  <div class="wrap">
+    <div class="c-row" style="--cols: 5fr 7fr;">
+      <div class="inner">
+        <div class="c-column">
+          <h2 class="fo-h2" data-anim>Questions, answered.</h2>
+          <p class="intro" style="margin-top:24px;" data-anim data-delay=".1">Something else on your mind? Email <span class="fo-link"><a href="mailto:info@flowopz.com">info@flowopz.com</a></span></p>
+        </div>
+        <div class="c-column faq" data-anim data-delay=".1">
+          <details><summary>How much does it cost?</summary><p>Our flat base rate is $10/hour with transparent tracking and zero lock-in. Need more capacity? A Weekly Sprint is $200 for 20 hours, and Agency Dedicated is $400 for 40 hours. No hidden fees or bloated retainers.</p></details>
+          <details><summary>What is a GoHighLevel snapshot?</summary><p>A GoHighLevel snapshot is a saved copy of a GHL account setup: pipelines, workflows, funnels, forms, calendars, custom fields and templates. Agencies load a snapshot into a new sub-account to launch a fully working CRM in minutes instead of rebuilding it for every client. We build industry-specific snapshots that are ready to deploy.</p></details>
+          <details><summary>Can you fix or audit my existing GoHighLevel account?</summary><p>Yes. Many projects start with a targeted fix or an audit call. We review your current GHL workflows, triggers, integrations and pipelines, find what is broken or slowing you down, and give you a clear proposal with scope, estimated hours and price before any work starts.</p></details>
+          <details><summary>How long does a GoHighLevel setup take?</summary><p>It depends on scope. Single webhook connections and workflow fixes take 2 to 4 hours. A multi-step automation or lead nurture sequence takes 5 to 10 hours. A full GHL sub-account setup with calendars and core pipelines typically takes 15 to 25 hours. You get a written estimate before any work starts.</p></details>
+          <details><summary>What tools do you integrate with GoHighLevel?</summary><p>We connect GoHighLevel with n8n, Make, Zapier, webhooks and REST APIs, plus tools like Stripe and Klaviyo. If an app has an API or webhook, we can usually connect it to your GHL account.</p></details>
+          <details><summary>What happens when a project is finished?</summary><p>It belongs to you. Every project ends with clean documentation, step-by-step SOPs and video walkthroughs, so your team keeps full ownership and confidence.</p></details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA (red) ================= -->
+<section class="c-section red s-cta" id="contact">
+  <div class="wrap">
+    <div class="c-row">
+      <div class="inner"><div class="c-column">
+        <h2 class="fo-display" data-anim>Book a free<br>consultation.</h2>
+      </div></div>
+    </div>
+    <div class="c-row mt-sm" style="--mt:56px; --cols: 7fr 5fr; --align: end;">
+      <div class="inner">
+        <div class="c-column"><p class="cta-text" data-anim data-delay=".08">We respond to new enquiries within 1 hour during working hours, Monday to Friday, with global coverage across time zones.</p></div>
+        <div class="c-column">
+          <div class="cta-stack" data-anim data-delay=".16">
+            <div class="fo-btn-ink"><a href="https://flowopz.com/book/">Book a Free Consultation <span aria-hidden="true">→</span></a></div>
+            <p class="fo-link"><a href="mailto:info@flowopz.com">info@flowopz.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= Footer ================= -->
+<footer class="c-section dark" style="--pt:80px; --pb:32px;">
+  <div class="wrap">
+    <div class="c-row" style="--cols: 6fr 3fr 3fr;">
+      <div class="inner">
+        <div class="c-column">
+          <p class="foot-logo">FlowOpz</p>
+          <p class="muted" style="max-width:24em;">High-efficiency GHL architecture and automated backend infrastructure.</p>
+        </div>
+        <div class="c-column">
+          <p class="foot-h">Page</p>
+          <ul class="foot-list">
+            <li class="fo-link"><a href="#services">Services</a></li>
+            <li class="fo-link"><a href="#process">Process</a></li>
+            <li class="fo-link"><a href="#pricing">Pricing</a></li>
+            <li class="fo-link"><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="c-column">
+          <p class="foot-h">Contact</p>
+          <ul class="foot-list">
+            <li class="fo-link"><a href="mailto:info@flowopz.com">info@flowopz.com</a></li>
+            <li class="fo-link"><a href="https://www.linkedin.com/company/112716790/">LinkedIn</a></li>
+            <li class="fo-link"><a href="https://www.instagram.com/automations.flowopz/">Instagram</a></li>
+            <li class="fo-link"><a href="https://www.upwork.com/freelancers/muhammadu649">Upwork</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="c-row mt-sm" style="--mt:72px; --cols: 1fr 1fr;">
+      <div class="inner foot-bottom">
+        <div class="c-column"><p>© 2026 FlowOpz. All rights reserved.</p></div>
+        <div class="c-column right"><p class="fo-link"><a href="https://flowopz.com/privacy/">Privacy Policy</a> &nbsp;·&nbsp; <a href="https://flowopz.com/terms/">Terms of Service</a></p></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* PREVIEW ONLY: mobile menu (GHL ka Nav Menu element ye khud karta hai) */
+  (function () {
+    var btn = document.querySelector('.menu-btn');
+    var panel = document.getElementById('menu-panel');
+    function close() { panel.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.textContent = 'Menu'; }
+    btn.addEventListener('click', function () {
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      btn.textContent = open ? 'Close' : 'Menu';
+    });
+    panel.addEventListener('click', function (e) { if (e.target.tagName === 'A') close(); });
+  })();
+
+  /* PREVIEW ONLY: GHL native "Entrance Animation" ko simulate karta hai.
+     GHL mein ye har element ki settings se hoga, koi code nahi. */
+  (function () {
+    var els = document.querySelectorAll('[data-anim]');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    els.forEach(function (el) {
+      el.classList.add('anim-wait');
+      el.style.transitionDelay = (el.dataset.delay || 0) + 's';
+      el.addEventListener('transitionend', function () { el.style.transitionDelay = ''; }, { once: true });
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('anim-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+</body>
+</html>

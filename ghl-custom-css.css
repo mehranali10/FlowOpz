@@ -1,0 +1,264 @@
+/* =====================================================================
+   FlowOpz — GHL Custom CSS (poora page)
+   Kahan paste karna hai:  Page editor > Settings > Custom CSS
+
+   Ye CSS sirf un elements/rows/columns par lagti hai jin par aap ne
+   Advanced > Custom Class mein neeche wali class likhi ho.
+
+   Classes:
+     fo-header     -> Header ROW (logo + menu + button)
+     fo-nav        -> Nav Menu element
+     fo-display    -> Hero HEADLINE
+     fo-h2         -> Har section ki H2 heading
+     fo-rule       -> Divider (load par line draw hoti hai)
+     fo-btn        -> Black button (hover: red fill)
+     fo-btn-ink    -> Red section par wala button (hover: white fill)
+     fo-link       -> Paragraph jis mein text link ho
+     fo-s1 ... fo-s5 -> Hero pipeline ke 5 stage paragraphs (New ... Won)
+     fo-stat       -> Stats wale 4 COLUMNS
+     fo-num        -> Stats ke bare numbers ($10/hr, < 60 sec ...)
+     fo-price      -> Pricing ke bare price ($10, $200, $400)
+     fo-marquee    -> Tools wali chalti patti ka paragraph
+     fo-item       -> "What we do" ke har item ka COLUMN
+     fo-step       -> Process ke har step ka COLUMN
+     fo-plan       -> Pricing ke har plan ka COLUMN
+     fo-img        -> Image element (hover zoom)
+   ===================================================================== */
+
+:root {
+  --fo-ink: #111111;
+  --fo-paper: #ffffff;
+  --fo-soft: #f3f3f0;
+  --fo-accent: #e63b19;
+  --fo-grey: #5f5f5f;
+  --fo-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* ---------- 1. Smooth scrolling ---------- */
+html { scroll-behavior: smooth; }
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+[id] { scroll-margin-top: 24px; }
+
+/* ---------- 2. Page load animation ---------- */
+body::before {
+  content: "FlowOpz";
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fo-accent);
+  color: #fff;
+  font: 800 clamp(40px, 8vw, 96px)/1 "Archivo", "Arial Black", sans-serif;
+  letter-spacing: -.04em;
+  pointer-events: none;
+  animation: fo-curtain .8s var(--fo-ease) .25s forwards;
+}
+@keyframes fo-curtain { to { transform: translateY(-100%); } }
+
+.fo-rule {
+  transform-origin: left center;
+  animation: fo-draw 1.1s var(--fo-ease) .85s both;
+}
+@keyframes fo-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ---------- 3. Typography (desktop / tablet / mobile khud adjust) ---------- */
+.fo-display,
+.fo-display * {
+  font-family: "Archivo", "Arial Black", sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(44px, 7.2vw, 108px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.045em !important;
+}
+.fo-h2,
+.fo-h2 * {
+  font-family: "Archivo", "Arial Black", sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(36px, 5vw, 72px) !important;
+  line-height: .96 !important;
+  letter-spacing: -.035em !important;
+}
+
+/* Bare numbers: stats aur prices (tablet par bhi fit rahein) */
+.fo-num,
+.fo-num :is(h1, h2, h3, h4, p, div) {
+  font-family: "Archivo", "Arial Black", sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(32px, 4.2vw, 64px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.04em !important;
+  white-space: nowrap;
+}
+.fo-price,
+.fo-price :is(h1, h2, h3, h4, p, div) {
+  font-family: "Archivo", "Arial Black", sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(44px, 5vw, 72px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.045em !important;
+}
+
+/* ---------- 4. Buttons & links ---------- */
+.fo-btn a, .fo-btn button,
+.fo-btn-ink a, .fo-btn-ink button { white-space: nowrap; }
+.fo-btn a, .fo-btn button,
+.fo-btn-ink a, .fo-btn-ink button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .3s var(--fo-ease), color .35s var(--fo-ease);
+}
+.fo-btn a::after, .fo-btn button::after,
+.fo-btn-ink a::after, .fo-btn-ink button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--fo-accent);
+  transform: translateY(101%);
+  transition: transform .45s var(--fo-ease);
+}
+.fo-btn-ink a::after, .fo-btn-ink button::after { background: #fff; }
+.fo-btn a:active, .fo-btn button:active,
+.fo-btn-ink a:active, .fo-btn-ink button:active { transform: scale(.98); }
+.fo-btn a:focus-visible, .fo-btn button:focus-visible,
+.fo-btn-ink a:focus-visible, .fo-btn-ink button:focus-visible { outline: 2px solid var(--fo-ink); outline-offset: 3px; }
+
+.fo-nav a,
+.fo-link a {
+  text-decoration: none !important;
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size .4s var(--fo-ease), color .3s;
+}
+.fo-nav a:focus-visible,
+.fo-link a:focus-visible { outline: 2px solid var(--fo-accent); outline-offset: 4px; }
+
+/* ---------- 5. Hero pipeline: lead har stage se guzarta dikhai deta hai ---------- */
+.fo-s1, .fo-s2, .fo-s3, .fo-s4, .fo-s5 {
+  color: var(--fo-ink);
+  animation: fo-stage 8s linear infinite;
+}
+.fo-s1 *, .fo-s2 *, .fo-s3 *, .fo-s4 *, .fo-s5 * { color: inherit !important; }
+.fo-s2 { animation-delay: 1.6s; }
+.fo-s3 { animation-delay: 3.2s; }
+.fo-s4 { animation-delay: 4.8s; }
+.fo-s5 { animation-delay: 6.4s; }
+@keyframes fo-stage {
+  0%, 21%, 100% { background-color: transparent; color: var(--fo-ink); }
+  3%, 18%       { background-color: var(--fo-accent); color: #fff; }
+}
+
+/* ---------- 6. Stats columns ---------- */
+.fo-stat {
+  border-left: 1px solid var(--fo-ink) !important;
+  padding-left: 24px !important;
+}
+
+/* ---------- 7. Tools marquee (chalti patti) ---------- */
+.fo-marquee { overflow: hidden !important; }
+.fo-marquee,
+.fo-marquee * { white-space: nowrap !important; }
+.fo-marquee > * {
+  display: inline-block !important;
+  animation: fo-marquee 40s linear infinite;
+}
+.fo-marquee:hover > * { animation-play-state: paused; }
+@keyframes fo-marquee { to { transform: translateX(-50%); } }
+
+/* ---------- 8. Hover: What we do / Process / Pricing ---------- */
+.fo-item, .fo-step, .fo-plan { position: relative !important; isolation: isolate; }
+
+.fo-item { border-top: 1px solid var(--fo-ink) !important; }
+.fo-item::before,
+.fo-plan::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: -1px;
+  height: 3px;
+  background: var(--fo-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .55s var(--fo-ease);
+}
+.fo-item :is(h2, h3, h4) { transition: color .3s var(--fo-ease), transform .45s var(--fo-ease); }
+
+.fo-step { border-top: 1px solid rgba(255, 255, 255, .35) !important; }
+.fo-step::before {
+  content: "";
+  position: absolute;
+  left: 0; top: -6px;
+  width: 11px; height: 11px;
+  background: var(--fo-accent);
+  transition: transform .45s var(--fo-ease);
+}
+
+.fo-plan {
+  border-top: 1px solid var(--fo-ink) !important;
+  transition: background-color .4s var(--fo-ease);
+}
+
+.fo-img { overflow: hidden !important; }
+.fo-img img { transition: transform .9s var(--fo-ease); }
+
+/* Hover sirf mouse wale devices par */
+@media (hover: hover) {
+  .fo-btn a:hover::after, .fo-btn button:hover::after,
+  .fo-btn-ink a:hover::after, .fo-btn-ink button:hover::after { transform: translateY(0); }
+  .fo-btn-ink a:hover, .fo-btn-ink button:hover,
+  .fo-btn-ink a:hover *, .fo-btn-ink button:hover * { color: var(--fo-ink) !important; }
+
+  .fo-nav a:hover,
+  .fo-link a:hover { background-size: 100% 1px; }
+
+  .fo-item:hover::before,
+  .fo-plan:hover::before { transform: scaleX(1); }
+  .fo-item:hover :is(h2, h3, h4) { color: var(--fo-accent) !important; transform: translateX(6px); }
+
+  .fo-step:hover::before { transform: scale(1.6) rotate(45deg); }
+
+  .fo-plan:hover { background-color: var(--fo-soft) !important; }
+
+  .fo-img:hover img { transform: scale(1.04); }
+}
+
+/* ---------- 9. Mobile (767px tak) ---------- */
+@media (max-width: 767px) {
+  .fo-display,
+  .fo-display * { font-size: clamp(40px, 11.5vw, 64px) !important; }
+
+  /* Logo aur menu ek hi line mein (GHL mobile par columns stack karta hai) */
+  .fo-header .inner {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .fo-header .c-column { width: auto !important; flex: 0 1 auto !important; }
+
+  .fo-stat {
+    border-left: 0 !important;
+    border-top: 1px solid var(--fo-ink) !important;
+    padding: 20px 0 !important;
+  }
+  .fo-marquee > * { animation-duration: 28s; }
+}
+
+/* ---------- 10. Reduce motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body::before { display: none; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
